@@ -1,15 +1,14 @@
 import React from 'react';
 import { createContext, useEffect, useState } from 'react';
 
-export interface IAuthContextType {
+interface IAuthContextType {
   isAuthenticated?: boolean;
   permissions: string[] | null
   setPermissions: React.Dispatch<React.SetStateAction<string[] | null>> | null;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>> | null;
-
 }
 
-export interface IAuthProviderParams {
+interface IAuthProviderParams {
   children: React.ReactNode;
   token: string | null;
   claims: string[] | null;
@@ -45,5 +44,7 @@ function AuthProvider(props: IAuthProviderParams) {
 
 export {
   AuthContext,
-  AuthProvider
+  AuthProvider,
+  IAuthContextType,
+  IAuthProviderParams
 }

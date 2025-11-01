@@ -66,5 +66,6 @@ function usePagination(props?: IUsepaginaionProps) {
 }
 
 export {
-    usePagination
+    usePagination,
+    IUsepaginaionProps
 }
