@@ -1,11 +1,11 @@
 import React from 'react';
-export interface IAuthContextType {
+interface IAuthContextType {
     isAuthenticated?: boolean;
     permissions: string[] | null;
     setPermissions: React.Dispatch<React.SetStateAction<string[] | null>> | null;
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>> | null;
 }
-export interface IAuthProviderParams {
+interface IAuthProviderParams {
     children: React.ReactNode;
     token: string | null;
     claims: string[] | null;
@@ -13,4 +13,4 @@ export interface IAuthProviderParams {
 }
 declare const AuthContext: React.Context<IAuthContextType>;
 declare function AuthProvider(props: IAuthProviderParams): import("react/jsx-runtime").JSX.Element;
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider, IAuthContextType, IAuthProviderParams };

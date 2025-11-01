@@ -16,4 +16,4 @@ declare function usePagination(props?: IUsepaginaionProps): {
     setPage: (value: number) => void;
     setCallback: (newCallback: Function) => void;
 };
-export { usePagination };
+export { usePagination, IUsepaginaionProps };
