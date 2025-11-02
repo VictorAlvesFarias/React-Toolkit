@@ -15,12 +15,12 @@ interface IBaseProviderParams {
 
 const BaseContext = createContext<IBaseContextType>({
   dictionary: {},
-  addItem: () => {},
-  removeItem: () => {},
+  addItem: () => { },
+  removeItem: () => { },
   getItem: () => undefined,
 });
 
-function DictionaryProvider(props: IBaseProviderParams) {
+function BaseProvider(props: IBaseProviderParams) {
   const [dictionary, setDictionary] = useState<Record<string, string>>(props.initialDictionary || {});
 
   const addItem = (key: string, value: string) => {
@@ -59,7 +59,7 @@ function DictionaryProvider(props: IBaseProviderParams) {
 
 export {
   BaseContext,
-  DictionaryProvider,
+  BaseProvider,
   IBaseContextType,
   IBaseProviderParams
 };
