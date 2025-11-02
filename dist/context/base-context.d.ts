@@ -11,5 +11,5 @@ interface IBaseProviderParams {
     onInit?: (context: IBaseContextType) => void;
 }
 declare const BaseContext: React.Context<IBaseContextType>;
-declare function DictionaryProvider(props: IBaseProviderParams): import("react/jsx-runtime").JSX.Element;
-export { BaseContext, DictionaryProvider, IBaseContextType, IBaseProviderParams };
+declare function BaseProvider(props: IBaseProviderParams): import("react/jsx-runtime").JSX.Element;
+export { BaseContext, BaseProvider, IBaseContextType, IBaseProviderParams };

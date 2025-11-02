@@ -6,7 +6,7 @@ const BaseContext = createContext({
     removeItem: () => { },
     getItem: () => undefined,
 });
-function DictionaryProvider(props) {
+function BaseProvider(props) {
     const [dictionary, setDictionary] = useState(props.initialDictionary || {});
     const addItem = (key, value) => {
         setDictionary(prev => ({ ...prev, [key]: value }));
@@ -33,4 +33,4 @@ function DictionaryProvider(props) {
     }, []);
     return (_jsx(BaseContext.Provider, { value: providerValues, children: props.children }));
 }
-export { BaseContext, DictionaryProvider };
+export { BaseContext, BaseProvider };
