@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 function usePagination(props) {
-    var _a, _b, _c;
-    const [page, setPage] = useState((_a = props === null || props === void 0 ? void 0 : props.page) !== null && _a !== void 0 ? _a : 1);
-    const [totalPages, setTotalPages] = useState((_b = props === null || props === void 0 ? void 0 : props.totalPages) !== null && _b !== void 0 ? _b : 0);
-    const [counter, setCounter] = useState((_c = props === null || props === void 0 ? void 0 : props.counter) !== null && _c !== void 0 ? _c : 2);
+    const [page, setPage] = useState(props?.page ?? 1);
+    const [totalPages, setTotalPages] = useState(props?.totalPages ?? 0);
+    const [counter, setCounter] = useState(props?.counter ?? 2);
     function handleSetCallback(newCallback) {
         useEffect(() => {
             if (newCallback) {
