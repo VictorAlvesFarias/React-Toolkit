@@ -12,7 +12,7 @@ interface IAuthProviderParams {
   children: React.ReactNode;
   token: string | null;
   claims: string[] | null;
-  onInit: () => {}
+  onInit: () => void;
 }
 
 const AuthContext = createContext<IAuthContextType>({
