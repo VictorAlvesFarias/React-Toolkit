@@ -12,7 +12,7 @@ interface IAuthProviderParams {
   children: React.ReactNode;
   token: string | null;
   claims: string[] | null;
-  onInit: () => void;
+  onInit: (e: IAuthContextType) => void;
 }
 
 const AuthContext = createContext<IAuthContextType>({
@@ -25,18 +25,19 @@ const AuthContext = createContext<IAuthContextType>({
 function AuthProvider(props: IAuthProviderParams) {
   const [isAuthenticated, setIsAuthenticated] = useState(!!props.token);
   const [permissionsContext, setPermissionsContext] = useState(props.claims);
+  const providerValues: IAuthContextType = {
+    isAuthenticated: isAuthenticated,
+    permissions: permissionsContext,
+    setPermissions: setPermissionsContext,
+    setIsAuthenticated: setIsAuthenticated
+  }
 
   useEffect(() => {
-    props.onInit();
+    props.onInit(providerValues);
   }, []);
 
   return (
-    <AuthContext.Provider value={{
-      isAuthenticated: isAuthenticated,
-      permissions: permissionsContext,
-      setPermissions: setPermissionsContext,
-      setIsAuthenticated: setIsAuthenticated
-    }}>
+    <AuthContext.Provider value={providerValues}>
       {props.children}
     </AuthContext.Provider>
   );
