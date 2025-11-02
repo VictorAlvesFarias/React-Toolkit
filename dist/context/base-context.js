@@ -2,13 +2,13 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { createContext, useState, useEffect } from 'react';
 const BaseContext = createContext({
     dictionary: {},
-    addItem: () => { },
+    setItem: () => { },
     removeItem: () => { },
     getItem: () => undefined,
 });
 function BaseProvider(props) {
     const [dictionary, setDictionary] = useState(props.initialDictionary || {});
-    const addItem = (key, value) => {
+    const setItem = (key, value) => {
         setDictionary(prev => ({ ...prev, [key]: value }));
     };
     const removeItem = (key) => {
@@ -23,7 +23,7 @@ function BaseProvider(props) {
     };
     const providerValues = {
         dictionary,
-        addItem,
+        setItem,
         removeItem,
         getItem,
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 interface IBaseContextType {
     dictionary: Record<string, string>;
-    addItem: (key: string, value: string) => void;
+    setItem: (key: string, value: string) => void;
     removeItem: (key: string) => void;
     getItem: (key: string) => string | undefined;
 }
