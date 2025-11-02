@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 interface IBaseContextType {
   dictionary: Record<string, string>;
-  addItem: (key: string, value: string) => void;
+  setItem: (key: string, value: string) => void;
   removeItem: (key: string) => void;
   getItem: (key: string) => string | undefined;
 }
@@ -15,7 +15,7 @@ interface IBaseProviderParams {
 
 const BaseContext = createContext<IBaseContextType>({
   dictionary: {},
-  addItem: () => { },
+  setItem: () => { },
   removeItem: () => { },
   getItem: () => undefined,
 });
@@ -23,7 +23,7 @@ const BaseContext = createContext<IBaseContextType>({
 function BaseProvider(props: IBaseProviderParams) {
   const [dictionary, setDictionary] = useState<Record<string, string>>(props.initialDictionary || {});
 
-  const addItem = (key: string, value: string) => {
+  const setItem = (key: string, value: string) => {
     setDictionary(prev => ({ ...prev, [key]: value }));
   };
 
@@ -31,6 +31,7 @@ function BaseProvider(props: IBaseProviderParams) {
     setDictionary(prev => {
       const newDict = { ...prev };
       delete newDict[key];
+      
       return newDict;
     });
   };
@@ -41,7 +42,7 @@ function BaseProvider(props: IBaseProviderParams) {
 
   const providerValues: IBaseContextType = {
     dictionary,
-    addItem,
+    setItem,
     removeItem,
     getItem,
   };
