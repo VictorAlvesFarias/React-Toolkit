@@ -9,15 +9,16 @@ const AuthContext = createContext({
 function AuthProvider(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(!!props.token);
     const [permissionsContext, setPermissionsContext] = useState(props.claims);
+    const providerValues = {
+        isAuthenticated: isAuthenticated,
+        permissions: permissionsContext,
+        setPermissions: setPermissionsContext,
+        setIsAuthenticated: setIsAuthenticated
+    };
     useEffect(() => {
-        props.onInit();
+        props.onInit(providerValues);
     }, []);
-    return (_jsx(AuthContext.Provider, { value: {
-            isAuthenticated: isAuthenticated,
-            permissions: permissionsContext,
-            setPermissions: setPermissionsContext,
-            setIsAuthenticated: setIsAuthenticated
-        }, children: props.children }));
+    return (_jsx(AuthContext.Provider, { value: providerValues, children: props.children }));
 }
 ;
 export { AuthContext, AuthProvider };

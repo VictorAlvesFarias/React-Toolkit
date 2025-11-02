@@ -9,7 +9,7 @@ interface IAuthProviderParams {
     children: React.ReactNode;
     token: string | null;
     claims: string[] | null;
-    onInit: () => void;
+    onInit: (e: IAuthContextType) => void;
 }
 declare const AuthContext: React.Context<IAuthContextType>;
 declare function AuthProvider(props: IAuthProviderParams): import("react/jsx-runtime").JSX.Element;
